@@ -13,7 +13,7 @@ Gpio::Gpio(std::string name, int bcmNumber) : name_(name), bcmNumber_(bcmNumber)
 
 Gpio::~Gpio()
 {
-    this.setMode( PM_OFF );
+    this->setMode( PM_OFF );
 }
 
 void Gpio::setMode( int mode )
