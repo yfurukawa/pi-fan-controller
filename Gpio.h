@@ -43,7 +43,7 @@ public:
     void outputLow();
 
 private:
-    gpio();
+    Gpio();
     std::string name_;  //!< GPIOの用途
     int bcmNumber_;     //!< 制御するGPIOのBCM番号
 };
