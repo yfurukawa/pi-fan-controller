@@ -9,6 +9,7 @@ Gpio::Gpio(std::string name, int bcmNumber) : name_(name), bcmNumber_(bcmNumber)
     if( bcmNumber_ > 27 ) {
         bcmNumber_ = 27;
     }
+    wiringPiSetupPinType(WPI_PIN_BCM);
 }
 
 Gpio::~Gpio()
