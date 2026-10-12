@@ -7,9 +7,9 @@ class Gpio
 public:
   Gpio();
   virtual ~Gpio();
-  bool addPin(IGpioPin pin);
+  bool addPin(int bcmNumber, IGpioPin* pin);
   IGpioPin* pin(int bcmNumber);
 
 protected:
-  std::map<std::string, IGpioPin*> gpioPins;  //!< 入出力用に設定されたGPIO Pin
+  std::map<int, IGpioPin*> gpioPins;  //!< 入出力用に設定されたGPIO Pin
 }

@@ -10,7 +10,7 @@ Gpio::~Gpio()
 
 }
 
-bool Gpio::addPin(IGpioPin pin)
+bool Gpio::addPin(int bcmNumber, IGpioPin*)
 {
 
 }
