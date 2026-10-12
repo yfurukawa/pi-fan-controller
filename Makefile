@@ -10,7 +10,7 @@ TARGET = pi-fan-controlle
 SRC= Gpio.cpp
 
 all: $(SRC:.cpp=.o) main.o 
-	$(CC) $(INCLUDE) $(LIB_DIR) $(OPT) -o $(TARGET) $(SRC:.cpp=.o) main.o
+	$(CC) $(INCLUDE) $(LIB_DIR) $(OPT) -o $(TARGET) $(SRC:.cpp=.o) main.o $(LIB)
 
 $(SRC:.cpp=.o): $(SRC)
 	$(CC) $(INCLUDE) $(LIB_DIR) $(OPT) -c $(SRC)
@@ -20,7 +20,7 @@ main.o: main.cpp
 	
 .PHONY: clean
 clean:
-	$(RM) *.o $(TARGET) $(TEST_TARGET) gmon.out *.gc* *.xml *.exe Fuga.cpp Hoge.cpp *.txt
+	$(RM) *.o $(TARGET) $(TEST_TARGET)
 
 .PHONY: install
 install:
