@@ -1,14 +1,18 @@
+#include <string>
 #include "Gpio.h"
+#include "IGpioPin.h"
+#include "DigitalIO.h"
 
 int main(int argc, char* argv[])
 {
-  Gpio* fanController = new Gpio( "fanController", 26 );
-  fanController->setMode( OUTPUT );
-  fanController->outputHigh();
+  Gpio* gpio = new Gpio();
+  gpio->addPin( new DigitalIO( "fanController", 26 ) );
+  gpio->pin(26)->setMode( OUTPUT );
+  gpio->pin(26)->outputHigh();
   delay( 5000 );
-  fanController->outputLow();
+  gpio->pin(26)->outputLow();
 
-  delete fanController;
+  delete gpio;
 
   return 0;
 }
