@@ -8,9 +8,9 @@
 
 #include <string>
 #include <wiringPi.h>
-#include "GpioPin.h"
+#include "IGpioPin.h"
 
-class DigitalIO: public GpioPin
+class DigitalIO: public IGpioPin
 {
 public:
     //! コンストラクタ
