@@ -15,7 +15,7 @@ bool Gpio::addPin(IGpioPin pin)
 
 }
 
-IGpioPin Gpio::providePin(std::string name, IGpioPin* pin)
+IGpioPin* Gpio::pin(int pin)
 {
 
 }
