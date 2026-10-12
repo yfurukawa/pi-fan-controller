@@ -1,3 +1,4 @@
+#include <string>
 #include <wiringPi.h>
 
 class gpio
@@ -5,7 +6,7 @@ class gpio
 public:
     gpio(std::string name, int bcmNumber);
     ~gpio();
-    void setMode()
+    void setMode();
 private:
     gpio();
     std::string name_;
