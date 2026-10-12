@@ -12,4 +12,4 @@ public:
 
 protected:
   std::map<int, IGpioPin*> gpioPins;  //!< 入出力用に設定されたGPIO Pin
-}
+};
