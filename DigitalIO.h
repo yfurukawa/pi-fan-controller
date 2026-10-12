@@ -13,12 +13,12 @@
 class DigitalIO: public GpioPin
 {
 public:
-	//! コンストラクタ
-	/*!
-	 \param name GPIOの用途
-     \param bcmNumber GPIOの番号（2〜27）
-	*/
-    DigitalIO(const std::string name, const int const bcmNumber);
+    //! コンストラクタ
+    /*!
+    \param name GPIOの用途
+    \param bcmNumber GPIOの番号（2〜27）
+    */
+    DigitalIO(const std::string name, const int bcmNumber);
 
     //! デストラクタ
     virtual ~DigitalIO();

@@ -1,6 +1,6 @@
 #include "DigitalIO.h"
 
-DigitalIO::DigitalIO(const std::string name, const int const bcmNumber) : IGpioPin( name, bcmNumber )
+DigitalIO::DigitalIO(const std::string name, const int bcmNumber) : IGpioPin( name, bcmNumber )
 {
     // Raspberry PiのGPIOのBCM番号は、2から27の範囲なので範囲内にあることを保証する
     if( bcmNumber_ < 2 ) {

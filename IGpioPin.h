@@ -3,7 +3,7 @@
 class IGpioPin
 {
 public:
-  IGpioPin(const std::string name, const int const bcmNumber);
+  IGpioPin(const std::string name, const int bcmNumber);
   virtual ~IGpioPin();
   virtual void shutdown() = 0;
 
@@ -13,4 +13,4 @@ protected:
 
 private:
   IGpioPin();
-}
+};
