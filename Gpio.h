@@ -9,7 +9,7 @@
 #include <string>
 #include <wiringPi.h>
 
-class gpio
+class Gpio
 {
 public:
 	//! コンストラクタ
@@ -17,10 +17,10 @@ public:
 	 \param name GPIOの用途
      \param bcmNumber GPIOの番号（2〜27）
 	*/
-    gpio(std::string name, int bcmNumber);
+    Gpio(std::string name, int bcmNumber);
 
     //! デストラクタ
-    ~gpio();
+    ~Gpio();
 
     //! 入出力モード設定
     /*!
@@ -41,7 +41,7 @@ public:
 
     //! ロジックレベルLowを出力する
     void outputLow();
-    
+
 private:
     gpio();
     std::string name_;  //!< GPIOの用途
