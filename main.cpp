@@ -9,10 +9,14 @@ int main(int argc, char* argv[])
   Gpio* gpio = new Gpio();
   gpio->addPin( 26, std::make_shared<DigitalIO>( "fanController", 26 ) );
 
-  dynamic_cast<DigitalIO>(gpio->pin(26))->setMode( OUTPUT );
-  //gpio->pin(26)->outputHigh();
+  auto fanController = std::dynamic_pointer_cast<DigitalIO>( gpio.pin(26) );
+
+  if (!fanController) {
+      exit(1);
+  }
+  fanController->outputHigh();
   delay( 5000 );
-  //gpio->pin(26)->outputLow();
+  fanController->outputLow();
 
   delete gpio;
 
