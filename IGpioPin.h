@@ -6,7 +6,7 @@
 class IGpioPin
 {
 public:
-  IGpioPin(const std::string& name, const int& bcmNumber){};
+  IGpioPin(const std::string& name, const int& bcmNumber):name_(name), bcmNumber_(bcmNumber){};
   virtual ~IGpioPin() = default;
 
 protected:
