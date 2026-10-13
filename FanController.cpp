@@ -21,5 +21,13 @@ FanController::~FanController()
 
 void FanController::controlFan()
 {
-
+  double temp = cpuTemp_->readCpuTemp();
+  if( temp > upperLimit_ )
+  {
+    fanInterfacePin_->outputHigh();
+  }
+  else if( temp < lowerLimit_ )
+  {
+    fanInterfacePin_->outputLow();
+  }
 }
