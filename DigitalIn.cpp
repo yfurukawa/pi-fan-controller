@@ -17,6 +17,6 @@ DigitalIn::DigitalIn(const std::string& name, const int& bcmNumber) : IGpioPin( 
 DigitalIn::~DigitalIn()
 {
     // 終了前にPinの設定をリセット
-    this->setMode( PM_OFF );
+    pinMode( bcmNumber_, PM_OFF );
 }
 

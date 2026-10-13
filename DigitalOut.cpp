@@ -17,7 +17,7 @@ DigitalOut::DigitalOut(const std::string& name, const int& bcmNumber) : IGpioPin
 DigitalOut::~DigitalOut()
 {
     // 終了前にPinの設定をリセット
-    this->setMode( PM_OFF );
+    pinMode( bcmNumber_, PM_OFF );
 }
 
 void DigitalOut::outputHigh()
