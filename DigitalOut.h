@@ -1,18 +1,18 @@
-//! DigitalIO class
+//! DigitalOut class
 /*!
- * GPIOインターフェースが提供するデジタル入出力を制御する
- * 引数で渡されたBCM番号のGPIOピンをデジタルI/Oにセットして入出力を制御する
+ * GPIOインターフェースが提供するデジタル出力を制御する
+ * 引数で渡されたBCM番号のGPIOピンをデジタル出力にセットして出力を制御する
  * GPIOの制御にはwiringPi（https://github.com/WiringPi/WiringPi）を使用
  *
  */
-#ifndef DIGITALIO_H_
-#define DIGITALIO_H_
+#ifndef DIGITALOUT_H_
+#define DIGITALOUT_H_
 
 #include <string>
 #include <wiringPi.h>
 #include "IGpioPin.h"
 
-class DigitalIO: public IGpioPin
+class DigitalOut: public IGpioPin
 {
 public:
     //! コンストラクタ
@@ -20,24 +20,10 @@ public:
     \param name GPIOの用途
     \param bcmNumber GPIOの番号（2〜27）
     */
-    DigitalIO(const std::string& name, const int& bcmNumber);
+    DigitalOut(const std::string& name, const int& bcmNumber);
 
     //! デストラクタ
-    virtual ~DigitalIO();
-
-    //! 入出力モード設定
-    /*!
-    当該クラスが管理するピンの入出力モードを設定する
-    \param mode 入出力モード
-        INPUT ... Input
-        OUTPUT ... Output
-        PWM_OUTPUT ... PWM output (frequency and pulse break ratio can be configured)
-        PWM_MS_OUTPUT ... PWM output with MS (Mark/Space)
-        PWM_BAL_OUTPUT ... PWM output with mode balanced
-        GPIO_CLOCK ... Frequency output
-        PM_OFF ... Release
-    */
-    void setMode(int mode);
+    virtual ~DigitalOut();
 
     //! ロジックレベルHighを出力する
     void outputHigh();
@@ -46,7 +32,7 @@ public:
     void outputLow();
 
 private:
-    DigitalIO(){};
+    DigitalOut(){};
 };
 
 #endif

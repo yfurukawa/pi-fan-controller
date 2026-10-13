@@ -1,6 +1,6 @@
-#include "DigitalIO.h"
+#include "DigitalOut.h"
 
-DigitalIO::DigitalIO(const std::string& name, const int& bcmNumber) : IGpioPin( name, bcmNumber )
+DigitalOut::DigitalOut(const std::string& name, const int& bcmNumber) : IGpioPin( name, bcmNumber )
 {
     // Raspberry PiのGPIOのBCM番号は、2から27の範囲なので範囲内にあることを保証する
     if( bcmNumber_ < 2 ) {
@@ -9,24 +9,23 @@ DigitalIO::DigitalIO(const std::string& name, const int& bcmNumber) : IGpioPin( 
     if( bcmNumber_ > 27 ) {
         bcmNumber_ = 27;
     }
+
+    // デジタル出力専用クラスなので、Pinの設定を出力に固定
+    pinMode( bcmNumber_, OUTPUT );
 }
 
-DigitalIO::~DigitalIO()
+DigitalOut::~DigitalOut()
 {
+    // 終了前にPinの設定をリセット
     this->setMode( PM_OFF );
 }
 
-void DigitalIO::setMode( int mode )
-{
-    pinMode( bcmNumber_, mode );
-}
-
-void DigitalIO::outputHigh()
+void DigitalOut::outputHigh()
 {
     digitalWrite( bcmNumber_, HIGH );
 }
 
-void DigitalIO::outputLow()
+void DigitalOut::outputLow()
 {
     digitalWrite( bcmNumber_, LOW );
 }
