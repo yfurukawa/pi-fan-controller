@@ -23,9 +23,6 @@ public:
     //! デストラクタ
     virtual ~DigitalIO();
 
-    //! 終了処理
-    virtual void shutdown();
-
     //! 入出力モード設定
     /*!
     当該クラスが管理するピンの入出力モードを設定する

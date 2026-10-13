@@ -1,3 +1,4 @@
+//#include <memory>
 #include <wiringPi.h>
 #include "Gpio.h"
 
@@ -10,26 +11,25 @@ Gpio::~Gpio()
 {
   for( auto itr = gpioPins.begin(); itr != gpioPins.end(); ++itr )
   {
-    itr->second->shutdown();
     gpioPins.erase(itr);
   }
 }
 
 bool Gpio::addPin(int bcmNumber, IGpioPin* pin)
 {
-  auto itr = gpioPins.insert( std::make_pair(bcmNumber, pin) );
+  auto itr = gpioPins.insert( std::make_pair(bcmNumber, std::make_unique<IGpioPin*>(pin)) );
   // insert時にキーが重複していた場合、そのデータへのイテレータが返る
-  if( itr == NULL )
-  {
-    return true;
-  }
-  else
+  if( 1 )
   {
     return false;
   }
+  else
+  {
+    return true;
+  }
 }
 
-IGpioPin* Gpio::pin(int pin)
+std::unique_ptr<IGpioPin*> Gpio::pin(int pin)
 {
   return gpioPins[pin];
 }

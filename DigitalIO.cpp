@@ -16,11 +16,6 @@ DigitalIO::~DigitalIO()
     this->setMode( PM_OFF );
 }
 
-void DigitalIO::shutdown()
-{
-    pinMode( bcmNumber_, PM_OFF );
-}
-
 void DigitalIO::setMode( int mode )
 {
     pinMode( bcmNumber_, mode );
