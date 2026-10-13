@@ -18,6 +18,12 @@ int main(int argc, char* argv[])
   double upperLimit( std::stod( argv[2] ) );
   int  interfacePin( std::stoi( argv[3] ) );
 
+  if( lowerLimit >= upperLimit )
+  {
+    std::cout << "lowerLimit must be smaller than upperLimit" << std::endl;
+    exit(1);
+  }
+  
   Gpio* gpio = new Gpio();
   gpio->addPin( interfacePin, std::make_shared<DigitalOut>( "fanInterface", interfacePin ) );
 
