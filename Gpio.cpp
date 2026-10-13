@@ -9,10 +9,7 @@ Gpio::Gpio()
 
 Gpio::~Gpio()
 {
-  for( auto itr = gpioPins.begin(); itr != gpioPins.end(); ++itr )
-  {
-    gpioPins.erase(itr);
-  }
+  gpioPins.clear();
 }
 
 bool Gpio::addPin(int bcmNumber, std::shared_ptr<IGpioPin> pin)
