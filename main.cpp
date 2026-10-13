@@ -56,8 +56,7 @@ int main(int argc, char* argv[])
   */
   signal( SIGINT, signal_handler );
 
-
-  Gpio* gpio = new Gpio();
+  std::unique_ptr<Gpio> gpio = std::make_unique<Gpio>();
   gpio->addPin( interfacePin, std::make_shared<DigitalOut>( "fanInterface", interfacePin ) );
 
   std::unique_ptr<FanController> fanController = std::make_unique<FanController>(lowerLimit, upperLimit, std::dynamic_pointer_cast<DigitalOut>( gpio->pin(interfacePin) ) );
@@ -77,19 +76,7 @@ int main(int argc, char* argv[])
     }
   }
   
-  /*
-  auto fan = std::dynamic_pointer_cast<DigitalOut>( gpio->pin(interfacePin) );
-
-  if (!fan) {
-      exit(1);
-  }
-//  fanController->outputHigh();
-  delay( 5000 );
-  fan->outputLow();
-  */
-  
   closelog();
-  delete gpio;
 
   return 0;
 }
