@@ -11,5 +11,5 @@ public:
   IGpioPin* pin(int bcmNumber);
 
 protected:
-  std::map<int, std::unique_prt<IGpioPin*>> gpioPins;  //!< 入出力用に設定されたGPIO Pin
+  std::map<int, std::unique_ptr<IGpioPin*>> gpioPins;  //!< 入出力用に設定されたGPIO Pin
 };
