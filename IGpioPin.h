@@ -6,15 +6,14 @@
 class IGpioPin
 {
 public:
-  IGpioPin(const std::string name, const int bcmNumber);
-  virtual ~IGpioPin();
+  IGpioPin(const std::string& name, const int& bcmNumber){};
+  virtual ~IGpioPin() = default;
 
 protected:
   std::string name_;  //!< GPIOの用途
   int bcmNumber_;     //!< 制御するGPIOのBCM番号
 
-private:
-  IGpioPin();
+  IGpioPin(){};
 };
 
 #endif
