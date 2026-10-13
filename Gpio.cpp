@@ -8,7 +8,11 @@ Gpio::Gpio()
 
 Gpio::~Gpio()
 {
-
+  for( auto itr = gpioPins.begin(); itr != gpioPins.end(); ++itr )
+  {
+    itr->second->shutdown();
+    gpioPins.erase(itr);
+  }
 }
 
 bool Gpio::addPin(int bcmNumber, IGpioPin* pin)
@@ -27,5 +31,5 @@ bool Gpio::addPin(int bcmNumber, IGpioPin* pin)
 
 IGpioPin* Gpio::pin(int pin)
 {
-
+  return gpioPins[pin];
 }
