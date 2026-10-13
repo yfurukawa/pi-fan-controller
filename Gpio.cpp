@@ -15,7 +15,7 @@ Gpio::~Gpio()
   }
 }
 
-bool Gpio::addPin(int bcmNumber, std::unique_ptr<IGpioPin> pin)
+bool Gpio::addPin(int bcmNumber, std::shared_ptr<IGpioPin> pin)
 {
   if( !pin )
   {
@@ -26,7 +26,7 @@ bool Gpio::addPin(int bcmNumber, std::unique_ptr<IGpioPin> pin)
   return inserted;
 }
 
-std::unique_ptr<IGpioPin*> Gpio::pin(int pin)
+std::shared_ptr<IGpioPin> Gpio::pin(const int bcmNumber)
 {
-  return NULL;
+  return gpioPins.at( bcmNumber );
 }
