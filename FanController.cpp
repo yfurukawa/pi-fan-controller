@@ -19,7 +19,7 @@ FanController::~FanController()
 
 }
 
-FanController::controlFan()
+void FanController::controlFan()
 {
 
 }
