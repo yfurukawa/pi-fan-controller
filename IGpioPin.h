@@ -1,3 +1,6 @@
+#ifndef IGPIOPIN_H_
+#define IGPIOPIN_H_
+
 #include <string>
 
 class IGpioPin
@@ -13,3 +16,6 @@ protected:
 private:
   IGpioPin();
 };
+
+#endif
+

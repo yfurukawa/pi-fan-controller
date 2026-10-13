@@ -5,6 +5,8 @@
  * GPIOの制御にはwiringPi（https://github.com/WiringPi/WiringPi）を使用
  *
  */
+#ifndef DIGITALIO_H_
+#define DIGITALIO_H_
 
 #include <string>
 #include <wiringPi.h>
@@ -46,3 +48,6 @@ public:
 private:
     DigitalIO();
 };
+
+#endif
+
