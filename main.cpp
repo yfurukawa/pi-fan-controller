@@ -1,3 +1,4 @@
+#include <iostream>
 #include <memory>
 #include <string>
 #include "FanController.h"
@@ -7,14 +8,24 @@
 
 int main(int argc, char* argv[])
 {
-  Gpio* gpio = new Gpio();
-  gpio->addPin( 26, std::make_shared<DigitalOut>( "fanInterface", 26 ) );
+  if( argc != 4 ) {
+    std::cout << "Usage:" << std::endl;
+    std::cout << "  pi-fan-controlle lowerLimitTemperature uppeLimitTemperature fanInterfaceBCMNumber" << std::endl;
+    exit(1);
+  }
 
-  std::unique_ptr<FanController> fanController = std::make_unique<FanController>(30.0, 35.0, std::dynamic_pointer_cast<DigitalOut>( gpio->pin(26) ) );
+  double lowerLimit( std::stod( argv[1] ) );
+  double upperLimit( std::stod( argv[2] ) );
+  int  interfacePin( std::stoi( argv[3] ) );
+
+  Gpio* gpio = new Gpio();
+  gpio->addPin( interfacePin, std::make_shared<DigitalOut>( "fanInterface", interfacePin ) );
+
+  std::unique_ptr<FanController> fanController = std::make_unique<FanController>(lowerLimit, upperLimit, std::dynamic_pointer_cast<DigitalOut>( gpio->pin(interfacePin) ) );
   
   fanController->controlFan();
 
-  auto fan = std::dynamic_pointer_cast<DigitalOut>( gpio->pin(26) );
+  auto fan = std::dynamic_pointer_cast<DigitalOut>( gpio->pin(interfacePin) );
 
   if (!fan) {
       exit(1);
