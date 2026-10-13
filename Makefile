@@ -6,7 +6,7 @@ LIB_DIR = -L/usr/lib -L/usr/local/lib -L/usr/lib64 -L/usr/local/lib64
 INSTALL_DIR = /usr/local/bin
 LIB = -lwiringPi
 OPT = -O0 -g3 -Wall -Wnon-virtual-dtor -Woverloaded-virtual -fmessage-length=0
-TARGET = pi-fan-controlle
+TARGET = pi-fan-controller
 SRC= Gpio.cpp DigitalOut.cpp DigitalIn.cpp FanController.cpp CpuTemperatureMonitor.cpp
 
 all: $(SRC:.cpp=.o) main.o 
