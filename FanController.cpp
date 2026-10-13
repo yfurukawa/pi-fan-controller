@@ -1,6 +1,6 @@
 #include "FanController.h"
 
-FanController::FanController( double lowerLimit, double upperLimit ):lowerLimit_(lowerLimit), upperLimit_(upperLimit)
+FanController::FanController( double lowerLimit, double upperLimit, std::shared_ptr<DigitalOut> fanInterfacePin ):lowerLimit_(lowerLimit), upperLimit_(upperLimit), fanInterfacePin_(fanInterfacePin)
 {
   if( lowerLimit_ <= 25.0 )
   {
